@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-us"
+         mode="voice"
+         xmlns="http://www.w3.org/2001/06/grammar"
+         tag-format="semantics/1.0"
+         root="gameoptions">
+
+  <rule id="gameoptions">
+    <one-of>
+      <item>
+        <tag>out.command="topleft";</tag>
+        <one-of>
+          <item>top left</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="topmiddle";</tag>
+        <one-of>
+          <item>top middle</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="topright";</tag>
+        <one-of>
+          <item>top right</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="middleleft";</tag>
+        <one-of>
+          <item>middle left</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="middlemiddle";</tag>
+        <one-of>
+          <item>middle middle</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="middleright";</tag>
+        <one-of>
+          <item>middle right</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="bottomleft";</tag>
+        <one-of>
+          <item>bottom left</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="bottommiddle";</tag>
+        <one-of>
+          <item>bottom middle</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="bottomright";</tag>
+        <one-of>
+          <item>bottom right</item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+</grammar>
+
+
