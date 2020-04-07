@@ -1,12 +1,59 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+
+using Windows.Media.SpeechRecognition;
+using Windows.Storage;
+using System.Linq;
 public class Connect4
 {
+    public Connect4()
+    {
+        connectSpeech();
+    }
+
+    private SpeechRecognizer speechRecognizer;
+    private async void connectSpeech()
+    {
+        speechRecognizer = new SpeechRecognizer();
+        speechRecognizer.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(0);
+        speechRecognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(5);
+        speechRecognizer.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(0.5);
+
+        // load grammar file here
+        var grammarFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///connectGrammar.xml"));
+        //adds constraints to the speechrecognizer
+        speechRecognizer.Constraints.Add(new SpeechRecognitionGrammarFileConstraint(grammarFile));
+        var result = await speechRecognizer.CompileConstraintsAsync();
+        if (result.Status == SpeechRecognitionResultStatus.Success)
+        {
+            while (true)
+            {
+                //listen in to the user
+                SpeechRecognitionResult srr = await speechRecognizer.RecognizeAsync();
+                string myCommand = "No command found";
+                if ((srr.Confidence == SpeechRecognitionConfidence.High) ||
+                    (srr.Confidence == SpeechRecognitionConfidence.Medium))
+                {
+                    //get commands
+                    myCommand = srr.SemanticInterpretation.Properties["command"].Single();
+
+                    if (!_won)
+                    {
+                        if (_board[int.Parse(myCommand), 0] == 0) // Check Free Row
+                            Set(grid1, 0, int.Parse(myCommand));
+                        else
+                            Show("Game Over!", title);
+                    }
+                }
+            }
+        }
+    }
+
+    Grid grid1;
     private const string title = "Four In Row";
     private const string yellow = "\U0001F7E1";
     private const string red = "\U0001F534";
@@ -36,6 +83,7 @@ public class Connect4
         new UICommandInvokedHandler((cmd) => result = false)));
         await dialog.ShowAsync(); return result;
     }
+    #region winning conditions
     private bool CheckVertical(int row, int column)
     {
         _value = 0;
@@ -151,6 +199,7 @@ public class Connect4
         return vertical || horizontal ||
         diagonalTopLeft || diagonalTopRight;
     }
+    #endregion
     private bool Full()
     {
         for (int row = 0; row < size; row++)
@@ -250,6 +299,7 @@ public class Connect4
         }
     }    public async void New(Grid grid)
     {
+        grid1 = grid;
         Layout(ref grid);
         _won = false;
         _player = await ConfirmAsync("Who goes First?", title,

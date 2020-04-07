@@ -9,14 +9,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <StackPanel Name = "myPanel">
+            <Button Content = "Connect 4" Click="Connect" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "100" />
+            <Button Content = "Tic Tac Toe" Click="Tic" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "100" />
+        </StackPanel>
         <Viewbox>
             <Grid Margin="50" Name="Display"
  HorizontalAlignment="Center"
- VerticalAlignment="Center"/>
+ VerticalAlignment="Center"
+                  />
         </Viewbox>
         <CommandBar VerticalAlignment="Bottom">
-            <AppBarButton Icon="Page2" Label="New" Click="Connect"/>
-            <AppBarButton Icon="Page2" Label="New" Click="Tic"/>
+            <AppBarButton Icon="Page2" Label="New Connect4" Click="Connect"/>
+            <AppBarButton Icon="Page2" Label="New TicTacToe" Click="Tic"/>
         </CommandBar>
     </Grid>
 </Page>

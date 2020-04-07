@@ -30,59 +30,20 @@ namespace Project
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
         
         TicTacToe ticTacToe = new TicTacToe();
         private void Tic(object sender, RoutedEventArgs e)
         {
+            myPanel.Visibility = Visibility.Collapsed;
             ticTacToe.New(Display);
         }
         Connect4 connect4 = new Connect4();
         private void Connect(object sender, RoutedEventArgs e)
         {
+            myPanel.Visibility = Visibility.Collapsed;
             connect4.New(Display);
         }
-        
-    }
-
-}
-
-/*
-//create a speech recognizer object - listens
-private SpeechRecognizer speechRecognizer;
-
-public MainPage()
-{
-    this.InitializeComponent();
-    this.Loaded += MainPage_Loaded;
-}
-
-private async void MainPage_Loaded(object sender, RoutedEventArgs e)
-{
-    speechRecognizer = new SpeechRecognizer();
-    speechRecognizer.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(0);
-    speechRecognizer.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(5);
-    speechRecognizer.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(0.5);
-
-    // load grammar file here
-    var grammarFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///grammar.xml"));
-    //adds constraints to the speechrecognizer
-    speechRecognizer.Constraints.Add(new SpeechRecognitionGrammarFileConstraint(grammarFile));
-    var result = await speechRecognizer.CompileConstraintsAsync();
-    if (result.Status == SpeechRecognitionResultStatus.Success)
-    {
-        while (true)
-        {
-            //listen in to the user
-            SpeechRecognitionResult srr = await speechRecognizer.RecognizeAsync();
-            //get commands
-            string myCommand = srr.SemanticInterpretation.Properties["command"].Single();
-            string ruleID = srr.RulePath[0];
-            var messageDialog = new Windows.UI.Popups.MessageDialog(myCommand, "User Said This " + ruleID);
-            await messageDialog.ShowAsync();
-        }
     }
 }
-}
-}
-*/

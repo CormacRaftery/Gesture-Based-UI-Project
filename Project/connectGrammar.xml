@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar version="1.0" xml:lang="en-us"
+         mode="voice"
+         xmlns="http://www.w3.org/2001/06/grammar"
+         tag-format="semantics/1.0"
+         root="gameoptions">
+
+  <rule id="gameoptions">
+    <one-of>
+      <item>
+        <tag>out.command="0";</tag>
+        <one-of>
+          <item>0</item>
+          <item>zero</item>
+          <item>nought</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="1";</tag>
+        <one-of>
+          <item>1</item>
+          <item>one</item>
+          <item>won</item>
+          <item>first</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="2";</tag>
+        <one-of>
+          <item>2</item>
+          <item>too</item>
+          <item>to</item>
+          <item>two</item>
+          <item>second</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="3";</tag>
+        <one-of>
+          <item>3</item>
+          <item>tree</item>
+          <item>three</item>
+          <item>third</item>
+          <item>turd</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="4";</tag>
+        <one-of>
+          <item>4</item>
+          <item>fourth</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="5";</tag>
+        <one-of>
+          <item>5</item>
+          <item>fifth</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="6";</tag>
+        <one-of>
+          <item>6</item>
+          <item>sixth</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.command="7";</tag>
+        <one-of>
+          <item>7</item>
+          <item>seventh</item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+</grammar>
+
+

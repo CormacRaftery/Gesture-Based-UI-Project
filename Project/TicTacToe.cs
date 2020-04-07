@@ -322,7 +322,6 @@ namespace Project
         private bool _won = false;
         private string _piece = blank;
         private string[,] _board = new string[size, size];
-        private int i = 0;
         private async Task<bool> ConfirmAsync(string content, string title,
          string ok, string cancel)
         {
@@ -385,11 +384,10 @@ namespace Project
                 Child = textblock
             };
         }
-        private void Add(ref Grid grid, int row, int column, int i)
+        private void Add(ref Grid grid, int row, int column)
         {
             Button button = new Button()
             {
-                Tag = i,
                 Width = 75,
                 Height = 75,
                 Margin = new Thickness(10),
@@ -397,7 +395,7 @@ namespace Project
             ["ButtonRevealStyle"]
             };
 
-            button.Click += (object sender, RoutedEventArgs e) =>/////////change for speech
+            button.Click += (object sender, RoutedEventArgs e) =>
             {
                 if (!_won)
                 {
@@ -449,9 +447,8 @@ namespace Project
             {
                 for (int column = 0; (column < size); column++)
                 {
-                    Add(ref grid, row, column, i);
+                    Add(ref grid, row, column);
                     _board[row, column] = blank;
-                    i++;
                 }
             }
         }
