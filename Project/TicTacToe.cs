@@ -11,12 +11,14 @@ using System.Linq;
 
 namespace Project
 {
+
     public class TicTacToe
     {
         public TicTacToe()
         {
             ticSpeech();
         }
+        Grid grid1;
         private SpeechRecognizer speechRecognizer;
         private async void ticSpeech()
         {
@@ -26,7 +28,7 @@ namespace Project
             speechRecognizer.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(0.5);
 
             // load grammar file here
-            var grammarFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///grammar.xml"));
+            var grammarFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///ticTacToeGrammar.xml"));
             //adds constraints to the speechrecognizer
             speechRecognizer.Constraints.Add(new SpeechRecognitionGrammarFileConstraint(grammarFile));
             var result = await speechRecognizer.CompileConstraintsAsync();
@@ -43,17 +45,270 @@ namespace Project
                         //get commands
                         myCommand = srr.SemanticInterpretation.Properties["command"].Single();
                         string ruleID = srr.RulePath[0];
+                        var arr = grid1.Children.ToArray();
+                        #region voice placements
                         if (myCommand == "topleft")
                         {
-                            //var titleElement = document.getElementById("title");
-                            //var titleChildren = ref Grid grid.getElementsByTagName("H1");
-                            
-                            _board[0, 0] = _piece;
-                            _piece = (_piece == cross ? nought : cross);
-
+                            if (!_won)
+                            {
+                                arr[0] = Piece();
+                                _board[0, 0] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[0].SetValue(Grid.ColumnProperty, 0);
+                            arr[0].SetValue(Grid.RowProperty, 0);
+                            grid1.Children.Add(arr[0]);
                         }
-                        //var messageDialog = new Windows.UI.Popups.MessageDialog(myCommand, "User Said This " + ruleID);
-                        //await messageDialog.ShowAsync();
+                        else if (myCommand == "topmiddle")
+                        {
+                            if (!_won)
+                            {
+                                arr[1] = Piece();
+                                _board[0, 1] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[1].SetValue(Grid.ColumnProperty, 1);
+                            arr[1].SetValue(Grid.RowProperty, 0);
+                            grid1.Children.Add(arr[1]);
+                        }
+                        if (myCommand == "topright")
+                        {
+                            if (!_won)
+                            {
+                                arr[2] = Piece();
+                                _board[0, 2] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[2].SetValue(Grid.ColumnProperty, 2);
+                            arr[2].SetValue(Grid.RowProperty, 0);
+                            grid1.Children.Add(arr[2]);
+                        }
+                        if (myCommand == "middleleft")
+                        {
+                            if (!_won)
+                            {
+                                arr[3] = Piece();
+                                _board[1, 0] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[3].SetValue(Grid.ColumnProperty, 0);
+                            arr[3].SetValue(Grid.RowProperty, 1);
+                            grid1.Children.Add(arr[3]);
+                        }
+                        if (myCommand == "middlemiddle")
+                        {
+                            if (!_won)
+                            {
+                                arr[4] = Piece();
+                                _board[1, 1] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[4].SetValue(Grid.ColumnProperty, 1);
+                            arr[4].SetValue(Grid.RowProperty, 1);
+                            grid1.Children.Add(arr[4]);
+                        }
+                        if (myCommand == "middleright")
+                        {
+                            if (!_won)
+                            {
+                                arr[5] = Piece();
+                                _board[1, 2] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[5].SetValue(Grid.ColumnProperty, 2);
+                            arr[5].SetValue(Grid.RowProperty, 1);
+                            grid1.Children.Add(arr[5]);
+                        }
+                        if (myCommand == "bottomleft")
+                        {
+                            if (!_won)
+                            {
+                                arr[6] = Piece();
+                                _board[2, 0] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[6].SetValue(Grid.ColumnProperty, 0);
+                            arr[6].SetValue(Grid.RowProperty, 2);
+                            grid1.Children.Add(arr[6]);
+                        }
+                        if (myCommand == "bottommiddle")
+                        {
+                            if (!_won)
+                            {
+                                arr[7] = Piece();
+                                _board[2, 1] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[7].SetValue(Grid.ColumnProperty, 1);
+                            arr[7].SetValue(Grid.RowProperty, 2);
+                            grid1.Children.Add(arr[7]);
+                        }
+                        if (myCommand == "bottomright")
+                        {
+                            if (!_won)
+                            {
+                                arr[8] = Piece();
+                                _board[2, 2] = _piece;
+                                if (Winner())
+                                {
+                                    _won = true;
+                                    Show($"{_piece} wins!", title);
+                                }
+                                else if (Drawn())
+                                {
+                                    Show("Draw!", title);
+                                }
+                                else
+                                {
+                                    // Swap Players
+                                    _piece = (_piece == cross ? nought : cross);
+                                }
+                            }
+                            else
+                            {
+                                Show("Game Over!", title);
+                            }
+                            arr[8].SetValue(Grid.ColumnProperty, 2);
+                            arr[8].SetValue(Grid.RowProperty, 2);
+                            grid1.Children.Add(arr[8]);
+                        }
+                        #endregion
                     }
                 }
             }
@@ -68,7 +323,6 @@ namespace Project
         private string _piece = blank;
         private string[,] _board = new string[size, size];
         private int i = 0;
-        private Grid GetGrid;
         private async Task<bool> ConfirmAsync(string content, string title,
          string ok, string cancel)
         {
@@ -142,6 +396,7 @@ namespace Project
                 Style = (Style)Application.Current.Resources
             ["ButtonRevealStyle"]
             };
+
             button.Click += (object sender, RoutedEventArgs e) =>/////////change for speech
             {
                 if (!_won)
@@ -194,7 +449,7 @@ namespace Project
             {
                 for (int column = 0; (column < size); column++)
                 {
-                    Add(ref grid, row, column,i);
+                    Add(ref grid, row, column, i);
                     _board[row, column] = blank;
                     i++;
                 }
@@ -202,7 +457,7 @@ namespace Project
         }
         public async void New(Grid grid)
         {
-            GetGrid = grid;
+            grid1 = grid;
             Layout(ref grid);
             _won = false;
             _piece = await ConfirmAsync("Who goes First?", title,
