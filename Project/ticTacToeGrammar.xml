@@ -11,36 +11,45 @@
         <tag>out.command="topleft";</tag>
         <one-of>
           <item>top left</item>
+          <item>upper left</item>
         </one-of>
       </item>
       <item>
         <tag>out.command="topmiddle";</tag>
         <one-of>
           <item>top middle</item>
+          <item>top centre</item>
+          <item>upper middle</item>
+          <item>upper centre</item>
         </one-of>
       </item>
       <item>
         <tag>out.command="topright";</tag>
         <one-of>
           <item>top right</item>
+          <item>upper right</item>
         </one-of>
       </item>
       <item>
         <tag>out.command="middleleft";</tag>
         <one-of>
           <item>middle left</item>
+          <item>center left</item>
         </one-of>
       </item>
       <item>
         <tag>out.command="middlemiddle";</tag>
         <one-of>
           <item>middle middle</item>
+          <item>middle</item>
+          <item>center</item>
         </one-of>
       </item>
       <item>
         <tag>out.command="middleright";</tag>
         <one-of>
           <item>middle right</item>
+          <item>upper left</item>
         </one-of>
       </item>
       <item>
@@ -53,6 +62,7 @@
         <tag>out.command="bottommiddle";</tag>
         <one-of>
           <item>bottom middle</item>
+          <item>bottom center</item>
         </one-of>
       </item>
       <item>

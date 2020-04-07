@@ -9,9 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/background.jpg"/>
+        </Grid.Background>
         <StackPanel Name = "myPanel">
-            <Button Content = "Connect 4" Click="Connect" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "100" />
-            <Button Content = "Tic Tac Toe" Click="Tic" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "100" />
+            <Button Background="AliceBlue" Content = "Connect 4" Click="Connect" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "25" />
+            <Button Background="LightBlue" Content = "How To Play" Click="HowTo" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "25" />
+            <Button Background="Aqua"  Content = "Tic Tac Toe" Click="Tic" Width = "400" Height = "100"  HorizontalAlignment="Center" Margin = "25" />
+        </StackPanel>
+        <StackPanel Background="WhiteSmoke" Name = "myInstructions" Visibility="Collapsed" Width = "400" Height = "100" VerticalAlignment="Center" HorizontalAlignment="Center" Margin = "25">
+            <TextBlock TextWrapping="WrapWholeWords">Connect 4: Columns are 0-6, name or select column and piece should drop.</TextBlock>
+            <TextBlock>Tic tac toe: Choose a grid to place your shape.</TextBlock>
+            <TextBlock>Menu buttons are always available in the command bar below.</TextBlock>
         </StackPanel>
         <Viewbox>
             <Grid Margin="50" Name="Display"
@@ -22,6 +31,7 @@
         <CommandBar VerticalAlignment="Bottom">
             <AppBarButton Icon="Page2" Label="New Connect4" Click="Connect"/>
             <AppBarButton Icon="Page2" Label="New TicTacToe" Click="Tic"/>
+            <AppBarButton Icon="Home" Label="New Home" Click="Homep"/>
         </CommandBar>
     </Grid>
 </Page>

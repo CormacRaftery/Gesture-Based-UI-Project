@@ -12,7 +12,13 @@
         <one-of>
           <item>0</item>
           <item>zero</item>
+          <item>row zero</item>
+          <item>row 0</item>
           <item>nought</item>
+          <item>row nought</item>
+          <item>column zero</item>
+          <item>column won</item>
+          <item>column 0</item>
         </one-of>
       </item>
       <item>
@@ -22,6 +28,14 @@
           <item>one</item>
           <item>won</item>
           <item>first</item>
+          <item>row 1</item>
+          <item>row one</item>
+          <item>row won</item>
+          <item>first row</item>
+          <item>column 1</item>
+          <item>column one</item>
+          <item>column won</item>
+          <item>first column</item>
         </one-of>
       </item>
       <item>
@@ -32,6 +46,16 @@
           <item>to</item>
           <item>two</item>
           <item>second</item>
+          <item>column 2</item>
+          <item>column too</item>
+          <item>column to</item>
+          <item>column two</item>
+          <item>second column</item>
+          <item>row 2</item>
+          <item>row too</item>
+          <item>row to</item>
+          <item>row two</item>
+          <item>second row</item>
         </one-of>
       </item>
       <item>
@@ -41,7 +65,14 @@
           <item>tree</item>
           <item>three</item>
           <item>third</item>
-          <item>turd</item>
+          <item>row 3</item>
+          <item>row tree</item>
+          <item>row three</item>
+          <item>third row</item>
+          <item>column 3</item>
+          <item>column tree</item>
+          <item>column three</item>
+          <item>third column</item>
         </one-of>
       </item>
       <item>
@@ -49,6 +80,10 @@
         <one-of>
           <item>4</item>
           <item>fourth</item>
+          <item>row 4</item>
+          <item>fourth row</item>
+          <item>column 4</item>
+          <item>fourth column</item>
         </one-of>
       </item>
       <item>
@@ -56,6 +91,10 @@
         <one-of>
           <item>5</item>
           <item>fifth</item>
+          <item>row 5</item>
+          <item>fifth row</item>
+          <item>column 5</item>
+          <item>fifth column</item>
         </one-of>
       </item>
       <item>
@@ -63,13 +102,10 @@
         <one-of>
           <item>6</item>
           <item>sixth</item>
-        </one-of>
-      </item>
-      <item>
-        <tag>out.command="7";</tag>
-        <one-of>
-          <item>7</item>
-          <item>seventh</item>
+          <item>row 6</item>
+          <item>sixth row</item>
+          <item>column 6</item>
+          <item>sixth column</item>
         </one-of>
       </item>
     </one-of>

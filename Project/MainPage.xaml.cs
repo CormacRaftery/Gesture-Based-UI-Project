@@ -37,13 +37,29 @@ namespace Project
         private void Tic(object sender, RoutedEventArgs e)
         {
             myPanel.Visibility = Visibility.Collapsed;
+            myInstructions.Visibility = Visibility.Collapsed;
+            Display.Visibility = Visibility.Visible;
             ticTacToe.New(Display);
         }
         Connect4 connect4 = new Connect4();
         private void Connect(object sender, RoutedEventArgs e)
         {
             myPanel.Visibility = Visibility.Collapsed;
+            Display.Visibility = Visibility.Visible;
+            myInstructions.Visibility = Visibility.Collapsed;
             connect4.New(Display);
+        }
+        private void HowTo(object sender, RoutedEventArgs e)
+        {
+            myPanel.Visibility = Visibility.Collapsed;
+            Display.Visibility = Visibility.Collapsed;
+            myInstructions.Visibility = Visibility.Visible;
+        }
+        private void Homep(object sender, RoutedEventArgs e)
+        {
+            Display.Visibility = Visibility.Collapsed;
+            myPanel.Visibility = Visibility.Visible;
+            myInstructions.Visibility = Visibility.Collapsed;
         }
     }
 }
